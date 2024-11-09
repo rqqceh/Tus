@@ -9,6 +9,7 @@ public class FromCameraPainter : MonoBehaviour
 {
     private Camera cam;
 
+    [SerializeField] GameObject mainCamera; 
     [SerializeField] Texture2D brush;
     [SerializeField] float brushSize = .5f;
     [SerializeField] Color paintColor = Color.white;
@@ -17,7 +18,7 @@ public class FromCameraPainter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = GetComponent<Camera>();
+        cam = mainCamera.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class FromCameraPainter : MonoBehaviour
             PaintObject();
             paintRemaining -= 5 * Time.deltaTime;
 
-            Debug.Log(paintRemaining);
+            //Debug.Log(paintRemaining);
         }
     }
     
@@ -69,6 +70,11 @@ public class FromCameraPainter : MonoBehaviour
     //TODO make it create a texture to keep consistent texel density
     private Texture2D CreateObjectTextue(GameObject gameObject)
     {
+        float targetTexelDensity;
+        float objectArea = CalculateObjectArea(gameObject);
+
+        Debug.Log(objectArea);
+        
         return new Texture2D(512, 512);
     }
 
@@ -80,7 +86,7 @@ public class FromCameraPainter : MonoBehaviour
         int brushWidth = (int)(brush.width * brushSize);
         int brushHeight = (int)(brush.height * brushSize);
 
-        //paints the paintColor where the r value of the brush is 0
+        //paints the paintColor where the r value of the brush is 255
         for(int x = 0; x < brushWidth; x++)
         {
             for (int y = 0; y < brushHeight; y++)
@@ -89,11 +95,35 @@ public class FromCameraPainter : MonoBehaviour
                 int currentTextureY = (int)(uv.y + y - (brushHeight / 2));
 
                 Color brushColor = brush.GetPixel((int)(x / brushSize), (int)(y / brushSize));
-                brushColor = Color.Lerp(paintColor, texture.GetPixel(currentTextureX, currentTextureY), brushColor.r);
+                brushColor = Color.Lerp(texture.GetPixel(currentTextureX, currentTextureY), paintColor, brushColor.r);
                 texture.SetPixel(currentTextureX, currentTextureY, brushColor);
             }
         }
 
         texture.Apply();
+    }
+
+    private float CalculateObjectArea(GameObject gameObject)
+    {
+        float area = 0;
+
+        Mesh mesh = gameObject.GetComponent<MeshFilter>().mesh;
+        for (int i = 0; i < mesh.triangles.Length; i += 3)
+        {
+            Vector3 vertA = mesh.vertices[mesh.triangles[i]];
+            Vector3 vertB = mesh.vertices[mesh.triangles[i + 1]];
+            Vector3 vertC = mesh.vertices[mesh.triangles[i + 2]];
+
+            Vector3 vectorAB = vertB - vertA;
+            Vector3 vectorAC = vertC - vertA;
+
+            Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
+
+            area += cros.magnitude / 2;
+        }
+        //Debug.Log(area);
+
+
+        return area;
     }
 }

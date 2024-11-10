@@ -18,9 +18,7 @@
 /[Rr]ecordings/
 
 # Imported Assets can get excessive in size
-/Assets/ImportedAssets/
-
-# Allow a Readme file in the "Imported Assets" folder to keep the folder itself in Git
+/Assets/ImportedAssets/*
 !/Assets/ImportedAssets/.gitkeep
 
 

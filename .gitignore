@@ -20,8 +20,10 @@
 # Imported Assets can get excessive in size
 /Assets/[Ii]mported[Aa]ssets/
 
-# Allow a .gitkeep file in the "Imported Assets" folder to keep the folder itself in Git
+# Allow a Readme file in the "Imported Assets" folder to keep the folder itself in Git
 !/Assets/[Ii]mported[Aa]ssets/.gitkeep
+!/Assets/[Ii]mported[Aa]ssets/Readme.asset
+!/Assets/[Ii]mported[Aa]ssets/Readme.asset.meta
 
 
 # Uncomment this line if you wish to ignore the asset store tools plugin

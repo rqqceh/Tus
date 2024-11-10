@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class FromCameraPainter : MonoBehaviour
     [SerializeField] GameObject mainCamera; 
     [SerializeField] Texture2D brush;
     [SerializeField] float brushSize = .5f;
+    [SerializeField] float targetTexelDensity = .5f;
     [SerializeField] Color paintColor = Color.white;
     public float paintRemaining = 50f;
 
@@ -70,12 +72,12 @@ public class FromCameraPainter : MonoBehaviour
     //TODO make it create a texture to keep consistent texel density
     private Texture2D CreateObjectTextue(GameObject gameObject)
     {
-        float targetTexelDensity;
         float objectArea = CalculateObjectArea(gameObject);
-
-        Debug.Log(objectArea);
         
-        return new Texture2D(512, 512);
+        int textureSize = (int)Math.Round(Math.Sqrt(objectArea) * targetTexelDensity);
+        Debug.Log(textureSize);
+        
+        return new Texture2D(textureSize, textureSize);
     }
 
     private void PaintTexure(Vector2 uv, Texture2D texture)

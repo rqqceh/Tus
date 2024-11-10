@@ -18,7 +18,7 @@
 /[Rr]ecordings/
 
 # Imported Assets can get excessive in size
-/Assets/[Ii]mported[Aa]ssets/
+/Assets/[Ii]mported[Aa]sset/
 
 # Allow a .gitkeep file in the "Imported Assets" folder to keep the folder itself in Git
 !/Assets/[Ii]mported[Aa]ssets/.gitkeep

@@ -11000,6 +11000,7 @@ MonoBehaviour:
   brushSize: 0.5
   targetTexelDensity: 20
   paintColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMaxDistance: 30
   paintRemaining: 1000
 --- !u!4 &1472366823
 Transform:
@@ -11029,7 +11030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texelDensity: 20
-  precomputeTextures: 1
+  precomputeTextures: 0
   paintableObjects:
   - {fileID: 1617782369}
   - {fileID: 2004545012}

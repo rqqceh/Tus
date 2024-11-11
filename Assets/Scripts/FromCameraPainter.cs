@@ -15,6 +15,7 @@ public class FromCameraPainter : MonoBehaviour
     [SerializeField] float brushSize = .5f;
     [SerializeField] float targetTexelDensity = .5f;
     [SerializeField] Color paintColor = Color.white;
+    [SerializeField] float rayMaxDistance = 30f;
     public float paintRemaining = 50f;
 
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class FromCameraPainter : MonoBehaviour
     private void PaintObject()
     {
         RaycastHit hit;
-        Physics.Raycast(cam.transform.position, cam.transform.forward, out hit);
+        Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rayMaxDistance);
         
         
         if(hit.transform == null)
@@ -89,6 +90,7 @@ public class FromCameraPainter : MonoBehaviour
 
                 Color brushColor = brush.GetPixel((int)(x / brushSize), (int)(y / brushSize));
                 brushColor = Color.Lerp(texture.GetPixel(currentTextureX, currentTextureY), paintColor, brushColor.r);
+                //brushColor = brush.GetPixel((int)(x / brushSize), (int)(y / brushSize));
                 texture.SetPixel(currentTextureX, currentTextureY, brushColor);
             }
         }

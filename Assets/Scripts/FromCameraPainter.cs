@@ -40,6 +40,7 @@ public class FromCameraPainter : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(cam.transform.position, cam.transform.forward, out hit);
         
+        
         if(hit.transform == null)
             return;
         
@@ -58,7 +59,7 @@ public class FromCameraPainter : MonoBehaviour
         if(renderer.material.mainTexture == null)
         {
             //does not have a texture. Creates a new texute
-            renderer.material.mainTexture = CreateObjectTextue(gameObject);
+            renderer.material.mainTexture = ObjectStatisticsUtility.CreateObjectTextue(gameObject, targetTexelDensity);
             texture = (Texture2D)renderer.material.mainTexture;
         }
         else
@@ -69,17 +70,21 @@ public class FromCameraPainter : MonoBehaviour
         return texture;
     }
 
-    //TODO make it create a texture to keep consistent texel density
-    private Texture2D CreateObjectTextue(GameObject gameObject)
-    {
-        float objectArea = CalculateObjectArea(gameObject);
-        
-        int textureSize = (int)Math.Round(Math.Sqrt(objectArea) * targetTexelDensity);
-        Debug.Log(textureSize);
-        
-        return new Texture2D(textureSize, textureSize);
-    }
+    // private Texture2D CreateObjectTextue(GameObject gameObject)
+    // {
+    //     float uvPersentage = ObjectUVAreaPercentage(gameObject);
+    //     float objectArea = ObjectArea(gameObject);
 
+    //     float fullTextureArea = objectArea + ((1 - uvPersentage) * objectArea);
+        
+    //     int textureSize = (int)Math.Round(Math.Sqrt(fullTextureArea) * targetTexelDensity);
+
+    //     Debug.Log("objectArea: " +  fullTextureArea + " uvPersentage: " + uvPersentage + " textueSize: " + textureSize );
+        
+    //     return new Texture2D(textureSize, textureSize);
+    // }
+
+    //paints the texure at the UV cordenate with diamiter of the brushSize and shape of brush 
     private void PaintTexure(Vector2 uv, Texture2D texture)
     {
         uv.x *= texture.width;
@@ -105,27 +110,52 @@ public class FromCameraPainter : MonoBehaviour
         texture.Apply();
     }
 
-    private float CalculateObjectArea(GameObject gameObject)
-    {
-        float area = 0;
+    // //calculates the area of the object in meters(1 unity unit) squared 
+    // private float ObjectArea(GameObject gameObject)
+    // {
+    //     float area = 0;
 
-        Mesh mesh = gameObject.GetComponent<MeshFilter>().mesh;
-        for (int i = 0; i < mesh.triangles.Length; i += 3)
-        {
-            Vector3 vertA = mesh.vertices[mesh.triangles[i]];
-            Vector3 vertB = mesh.vertices[mesh.triangles[i + 1]];
-            Vector3 vertC = mesh.vertices[mesh.triangles[i + 2]];
+    //     Mesh mesh = gameObject.GetComponent<MeshFilter>().mesh;
+    //     for (int i = 0; i < mesh.triangles.Length; i += 3)
+    //     {
+    //         Vector3 vertA = mesh.vertices[mesh.triangles[i]];
+    //         Vector3 vertB = mesh.vertices[mesh.triangles[i + 1]];
+    //         Vector3 vertC = mesh.vertices[mesh.triangles[i + 2]];
 
-            Vector3 vectorAB = vertB - vertA;
-            Vector3 vectorAC = vertC - vertA;
+    //         Vector3 vectorAB = vertB - vertA;
+    //         Vector3 vectorAC = vertC - vertA;
 
-            Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
+    //         Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
 
-            area += cros.magnitude / 2;
-        }
-        //Debug.Log(area);
+    //         area += cros.magnitude;
+    //     }
+    //     //Debug.Log(area);
+
+    //     return area / 2;
+    // }
+
+    // //calculates a # between 0 and 1, 1 being 100% of the uv map corilates to a point on the object
+    // private float ObjectUVAreaPercentage(GameObject gameObject)
+    // {
+    //     float uvArea = 0;
+
+    //     Mesh mesh = gameObject.GetComponent<MeshFilter>().mesh;
+    //     for (int i = 0; i < mesh.triangles.Length; i += 3)
+    //     {
+    //         Vector2 vertA = mesh.uv[mesh.triangles[i]];
+    //         Vector2 vertB = mesh.uv[mesh.triangles[i + 1]];
+    //         Vector2 vertC = mesh.uv[mesh.triangles[i + 2]];
+
+    //         Vector2 vectorAB = vertB - vertA;
+    //         Vector2 vectorAC = vertC - vertA;
+
+    //         Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
+
+    //         uvArea += cros.magnitude;
+    //     }
 
 
-        return area;
-    }
+    //     return uvArea / 2;
+    // }
+
 }

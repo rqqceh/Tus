@@ -68,6 +68,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "LeftHand",
+            "id": "d0d50d03-d0a9-4cd5-8161-9a6b3e96d548",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "4f817150-7f01-476d-b636-fc443b421732",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3230aff0-e92f-42e7-8e0b-fbfe1b489ad6",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

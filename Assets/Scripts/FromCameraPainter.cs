@@ -47,7 +47,7 @@ public class FromCameraPainter : MonoBehaviour
         
         Texture2D texture = GetOrCreateObjectsTexture(hit.transform.gameObject);
 
-        PaintTexure(hit.textureCoord, texture);
+        PaintTexture(hit.textureCoord, texture);
     }
 
     
@@ -59,8 +59,8 @@ public class FromCameraPainter : MonoBehaviour
 
         if(renderer.material.mainTexture == null)
         {
-            //does not have a texture. Creates a new texute
-            renderer.material.mainTexture = ObjectStatisticsUtility.CreateObjectTextue(gameObject, targetTexelDensity);
+            //does not have a texture. Creates a new texture
+            renderer.material.mainTexture = ObjectStatisticsUtility.CreateObjectTexture(gameObject, targetTexelDensity);
             texture = (Texture2D)renderer.material.mainTexture;
         }
         else
@@ -71,8 +71,8 @@ public class FromCameraPainter : MonoBehaviour
         return texture;
     }
 
-    //paints the texure at the UV cordenate with diamiter of the brushSize and shape of brush 
-    private void PaintTexure(Vector2 uv, Texture2D texture)
+    //paints the texture at the UV cordate with diameter of the brushSize and shape of brush 
+    private void PaintTexture(Vector2 uv, Texture2D texture)
     {
         uv.x *= texture.width;
         uv.y *= texture.height; 

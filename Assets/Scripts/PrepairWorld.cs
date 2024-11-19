@@ -72,7 +72,7 @@ public class PrepairWorld : MonoBehaviour
     {
         foreach (GameObject gameObject in paintableObjects)
         {
-            gameObject.GetComponent<Renderer>().material.mainTexture = ObjectStatisticsUtility.CreateObjectTextue(gameObject, texelDensity);
+            gameObject.GetComponent<Renderer>().material.mainTexture = ObjectStatisticsUtility.CreateObjectTexture(gameObject, texelDensity);
         }
     }
 }

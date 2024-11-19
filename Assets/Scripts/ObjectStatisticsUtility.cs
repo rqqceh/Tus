@@ -7,16 +7,16 @@ public static class ObjectStatisticsUtility
 {
 
     //creates a texture based on the objects surface area and the amount of uv space taken up
-    public static Texture2D CreateObjectTextue(GameObject gameObject, float targetTexelDensity)
+    public static Texture2D CreateObjectTexture(GameObject gameObject, float targetTexelDensity)
     {
-        float uvPersentage = ObjectUVAreaPercentage(gameObject);
+        float uvPercentage = ObjectUVAreaPercentage(gameObject);
         float objectArea = ObjectArea(gameObject);
 
-        float fullTextureArea = objectArea + ((1 - uvPersentage) * objectArea);
+        float fullTextureArea = objectArea + ((1 - uvPercentage) * objectArea);
         
         int textureSize = (int)Math.Round(Math.Sqrt(fullTextureArea) * targetTexelDensity);
 
-        Debug.Log("objectArea: " +  fullTextureArea + " uvPersentage: " + uvPersentage + " textueSize: " + textureSize );
+        Debug.Log("objectArea: " +  fullTextureArea + " uvPercentage: " + uvPercentage + " textureSize: " + textureSize );
         
         return new Texture2D(textureSize, textureSize);
     }
@@ -25,8 +25,8 @@ public static class ObjectStatisticsUtility
     public static float ObjectArea(GameObject gameObject)
     {
         float area = 0;
-
         Mesh mesh = gameObject.GetComponent<MeshFilter>().mesh;
+
         for (int i = 0; i < mesh.triangles.Length; i += 3)
         {
             Vector3 vertA = mesh.vertices[mesh.triangles[i]];
@@ -36,16 +36,17 @@ public static class ObjectStatisticsUtility
             Vector3 vectorAB = vertB - vertA;
             Vector3 vectorAC = vertC - vertA;
 
-            Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
+            Vector3 cross = Vector3.Cross(vectorAB, vectorAC);
 
-            area += cros.magnitude;
+            area += cross.magnitude;
         }
         //Debug.Log(area);
 
         return area / 2;
     }
 
-    // //calculates the area of the object in meters(1 unity unit) squared 
+    //calculates the area of the object in meters(1 unity unit) squared 
+    //it gives you a number between 0 and 1 (its not actually %)
     public static float ObjectUVAreaPercentage(GameObject gameObject)
     {
         float uvArea = 0;
@@ -60,9 +61,9 @@ public static class ObjectStatisticsUtility
             Vector2 vectorAB = vertB - vertA;
             Vector2 vectorAC = vertC - vertA;
 
-            Vector3 cros = Vector3.Cross(vectorAB, vectorAC);
+            Vector3 cross = Vector3.Cross(vectorAB, vectorAC);
 
-            uvArea += cros.magnitude;
+            uvArea += cross.magnitude;
         }
 
 

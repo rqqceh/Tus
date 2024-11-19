@@ -6,11 +6,9 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FromCameraPainter : MonoBehaviour
+public class PaintbrushController : MonoBehaviour
 {
-    private Camera cam;
-
-    [SerializeField] GameObject mainCamera; 
+    [SerializeField] GameObject fromObject; 
     [SerializeField] Texture2D brush;
     [SerializeField] float brushSize = .5f;
     [SerializeField] float targetTexelDensity = .5f;
@@ -18,11 +16,7 @@ public class FromCameraPainter : MonoBehaviour
     [SerializeField] float rayMaxDistance = 30f;
     public float paintRemaining = 50f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cam = mainCamera.GetComponent<Camera>();
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -39,37 +33,17 @@ public class FromCameraPainter : MonoBehaviour
     private void PaintObject()
     {
         RaycastHit hit;
-        Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, rayMaxDistance);
+        Physics.Raycast(fromObject.transform.position, fromObject.transform.forward, out hit, rayMaxDistance);
         
         
         if(hit.transform == null)
             return;
         
-        Texture2D texture = GetOrCreateObjectsTexture(hit.transform.gameObject);
+        Texture2D texture = ObjectStatisticsUtility.GetOrCreateObjectsTexture(hit.transform.gameObject,  targetTexelDensity);
 
         PaintTexture(hit.textureCoord, texture);
     }
 
-    
-
-    private Texture2D GetOrCreateObjectsTexture(GameObject gameObject)
-    {
-        Renderer renderer = gameObject.GetComponent<Renderer>();
-        Texture2D texture;
-
-        if(renderer.material.mainTexture == null)
-        {
-            //does not have a texture. Creates a new texture
-            renderer.material.mainTexture = ObjectStatisticsUtility.CreateObjectTexture(gameObject, targetTexelDensity);
-            texture = (Texture2D)renderer.material.mainTexture;
-        }
-        else
-        {
-            // has a texture, uses existing texture
-            texture = (Texture2D) renderer.material.mainTexture;
-        }
-        return texture;
-    }
 
     //paints the texture at the UV cordate with diameter of the brushSize and shape of brush 
     private void PaintTexture(Vector2 uv, Texture2D texture)

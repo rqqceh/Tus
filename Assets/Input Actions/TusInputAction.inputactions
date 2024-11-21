@@ -1,0 +1,446 @@
+{
+    "name": "TusInputAction",
+    "maps": [
+        {
+            "name": "PlayerControl_RightHanded",
+            "id": "23a41b37-3d75-4734-b4c3-a943be1aba85",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "793adac1-6ce2-4a79-9cf4-92b13856d7c2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "2e645705-bac2-4ae6-bf73-47acb7a1b42c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29b21090-3507-4123-add8-60852345a56b",
+                    "path": "<XRController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b962e37-dae4-4f09-a421-905fe5ff3d01",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerControl_LeftHanded",
+            "id": "c1d9a146-5971-431e-8c90-0e4aadd5273e",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "bd751454-8d09-486f-bcd1-cebe63e7f2b0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "4f17c9ab-21de-4c61-9411-a6700b18957b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7a191dd5-cd65-4589-a51e-30c6abc3907c",
+                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd7fdc54-d05c-4000-8c1b-69acdd91745e",
+                    "path": "<XRController>{LeftHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraControl_RightHanded",
+            "id": "f62dc844-942f-4c05-be29-81e2d4c6335d",
+            "actions": [
+                {
+                    "name": "CameraZoneMove",
+                    "type": "Value",
+                    "id": "66e4bc24-520a-4689-a696-7c70ca58fd7f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fb167684-22d4-42de-89ab-8b1376d97964",
+                    "path": "<XRController>{LeftHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraZoneMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraControl_LeftHanded",
+            "id": "e87b4d35-731a-461b-89d7-9d3b9a31c8b6",
+            "actions": [
+                {
+                    "name": "CameraZoneMove",
+                    "type": "Value",
+                    "id": "aef8e8c4-bd98-4d58-a829-99a3e9070123",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "73b70169-5a62-4c30-a17f-2b7c939bcfcb",
+                    "path": "<XRController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraZoneMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "DominantArm_RightHanded",
+            "id": "87e75e0d-6960-4ce2-82b3-b0a4f8fa3192",
+            "actions": [
+                {
+                    "name": "ObjectInteract",
+                    "type": "Button",
+                    "id": "4e028450-0daa-4d29-9f19-0a472e13e572",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Paint",
+                    "type": "Button",
+                    "id": "4c8c88a8-c8fc-4961-aa43-d55f827d7d0b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabColor",
+                    "type": "Button",
+                    "id": "45632db3-bfcd-498c-8749-2ee90529cb72",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d441e861-6090-43a0-b758-e96194bb9c45",
+                    "path": "<XRController>{LeftHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ObjectInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5f02631-5ef8-4b90-a4f4-ba2a3ca87252",
+                    "path": "<XRController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Paint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07cb2f07-3cd7-46b8-9040-090c982d1790",
+                    "path": "<XRController>{RightHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabColor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "DominantArm_LeftHanded",
+            "id": "cdd647e7-a4d2-4d8a-9a98-a88f519c43e6",
+            "actions": [
+                {
+                    "name": "ObjectInteract",
+                    "type": "Button",
+                    "id": "e9b1975f-ec20-491d-81f4-e78994d9dca9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Paint",
+                    "type": "Button",
+                    "id": "6b6cf42e-9ea3-4f29-99c7-8ca33ce17088",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabColor",
+                    "type": "Button",
+                    "id": "d684c8fb-de59-43cf-8f08-f0fca839fada",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "764c90a0-c474-4034-8c2a-94ba287abbf8",
+                    "path": "<XRController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ObjectInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8dab4d40-167e-4ede-9d9d-39ec9b28a6a4",
+                    "path": "<XRController>{LeftHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Paint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f280ea0f-45d5-4767-9279-024d224e2d99",
+                    "path": "<XRController>{LeftHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabColor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "NonDominantArm_RightHanded",
+            "id": "081678a1-30b9-4585-a9ab-542bae871ac9",
+            "actions": [
+                {
+                    "name": "BrushResize",
+                    "type": "Button",
+                    "id": "94e53f24-9f26-47d8-be7b-68fc5f9f4407",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b7e2876e-21e5-4747-b2ed-eef180b380ba",
+                    "path": "<XRController>{LeftHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BrushResize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "NonDominantArm_LeftHanded",
+            "id": "0d61c47c-7e9d-4ac8-baca-c82af868c6ee",
+            "actions": [
+                {
+                    "name": "BrushResize",
+                    "type": "Button",
+                    "id": "a1e07575-cdc7-48b4-8e2d-108e65071c7d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "37cdf0a1-5caf-48de-bfbd-f39a8228e21a",
+                    "path": "<XRController>{RightHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BrushResize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UINavigate_RightHanded",
+            "id": "592a2632-6b30-40ec-812d-6e38f2b99e13",
+            "actions": [
+                {
+                    "name": "PauseToggle",
+                    "type": "Button",
+                    "id": "213cb876-0ca5-4b3a-aedf-6b04990f3266",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InterfaceInteract",
+                    "type": "Button",
+                    "id": "00420afc-fd6e-468e-a726-206507ce431e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "643e154a-7f50-492b-9c3c-5d9b5ab4a20b",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dab233eb-a2bc-4f38-bbcc-ece404c9a482",
+                    "path": "<XRController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InterfaceInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UINavigate_LeftHanded",
+            "id": "60f6e6e3-4af0-4481-ad12-5449ef98c572",
+            "actions": [
+                {
+                    "name": "PauseToggle",
+                    "type": "Button",
+                    "id": "c91edaf7-64eb-4d02-a165-083a5621dd70",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InterfaceInteract",
+                    "type": "Button",
+                    "id": "44845d45-7ccf-4748-a592-3a08f124dec8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3907b077-6e8d-45e6-a0f2-871dbf3fbb71",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9adae655-692c-42c3-8c3f-2ab8ec068283",
+                    "path": "<XRController>{LeftHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InterfaceInteract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

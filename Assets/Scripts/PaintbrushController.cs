@@ -11,7 +11,7 @@ public class PaintbrushController : MonoBehaviour
     [SerializeField] GameObject fromObject; 
     [SerializeField] Texture2D brush;
     [SerializeField] float brushSize = .5f;
-    [SerializeField] float targetTexelDensity = .5f;
+    [SerializeField] float targetTexelDensity = 20f;
     [SerializeField] Color paintColor = Color.white;
     [SerializeField] float rayMaxDistance = 30f;
     public float paintRemaining = 50f;

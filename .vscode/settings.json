@@ -51,5 +51,11 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tus.sln"
+    "dotnet.defaultSolution": "Tus.sln",
+    "cSpell.words": [
+        "Behaviour",
+        "Lerp",
+        "texel",
+        "Texel"
+    ]
 }

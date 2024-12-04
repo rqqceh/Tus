@@ -2,7 +2,14 @@
 using UnityEngine.InputSystem;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+/**************************************************
+ * Attached to: 
+ * Purpose:
+ * Author:
+ * Version:
+ *************************************************/
+
+public class PlayerTurnController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float turnSpeed;

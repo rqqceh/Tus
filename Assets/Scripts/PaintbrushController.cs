@@ -14,19 +14,33 @@ public class PaintbrushController : MonoBehaviour
     [SerializeField] float targetTexelDensity = 20f;
     [SerializeField] Color paintColor = Color.white;
     [SerializeField] float rayMaxDistance = 30f;
+    [SerializeField] TusInputAction paintAction;
     public float paintRemaining = 50f;
 
 
-
-    // Update is called once per frame
-    void Update()
+    private void Awake() 
     {
-        if(Input.GetMouseButton(0) && paintRemaining >= 0)
+        paintAction = new TusInputAction();
+    }
+
+    private void OnEnable() 
+    {
+        paintAction.Enable();
+        paintAction.DominantArm_RightHanded.Paint.performed += ctx => HandlePainting();
+    }
+
+    private void HandlePainting()
+    {
+        if(paintRemaining >= 0)
         {
             PaintObject();
-            paintRemaining -= 5 * Time.deltaTime;
+            paintRemaining -= Time.deltaTime;
 
             //Debug.Log(paintRemaining);
+        }
+        else
+        {
+            Debug.Log("PAINT RAN OUT!!!");
         }
     }
     

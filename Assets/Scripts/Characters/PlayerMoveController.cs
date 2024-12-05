@@ -56,10 +56,9 @@ public class PlayerMoveController : MonoBehaviour
         if (IsGrounded())
         {
             Vector3 moveVector = new Vector3(moveInput.x, 0, moveInput.y);
-
             Vector3 targetVelocity = moveVector * moveSpeed * moveVector.magnitude;
 
-            rb.velocity = new Vector3(targetVelocity.x, rb.velocity.y, targetVelocity.z);
+            rb.velocity = transform.TransformDirection(targetVelocity);
         }
     }
 

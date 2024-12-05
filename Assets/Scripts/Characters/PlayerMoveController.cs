@@ -32,15 +32,16 @@ public class PlayerMoveController : MonoBehaviour
     void OnEnable()
     {
         controls.Enable();
-        if (isLeftHanded)
-        {
-            controls.PlayerControl_LeftHanded.Move.performed += ctx => PlayerMove(ctx.ReadValue<Vector2>());
-            controls.PlayerControl_LeftHanded.Move.canceled += ctx => moveInput = Vector2.zero;
-        }
-        else
+        if (!isLeftHanded)
         {
             controls.PlayerControl_RightHanded.Move.performed += ctx => PlayerMove(ctx.ReadValue<Vector2>());
             controls.PlayerControl_RightHanded.Move.canceled += ctx => moveInput = Vector2.zero;
+
+        }
+        else
+        {
+            controls.PlayerControl_LeftHanded.Move.performed += ctx => PlayerMove(ctx.ReadValue<Vector2>());
+            controls.PlayerControl_LeftHanded.Move.canceled += ctx => moveInput = Vector2.zero;
 
         }
     }

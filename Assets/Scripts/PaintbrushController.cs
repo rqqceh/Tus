@@ -5,16 +5,19 @@ using System.Xml.Serialization;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PaintbrushController : MonoBehaviour
 {
+    private TusInputAction paintAction;
+
+
     [SerializeField] GameObject fromObject; 
     [SerializeField] Texture2D brush;
     [SerializeField] float brushSize = .5f;
     [SerializeField] float targetTexelDensity = 20f;
     [SerializeField] Color paintColor = Color.white;
     [SerializeField] float rayMaxDistance = 30f;
-    [SerializeField] TusInputAction paintAction;
     public float paintRemaining = 50f;
 
 

@@ -15,10 +15,20 @@ public class SimonPuzzle : MonoBehaviour
     [SerializeField] GameObject fromObject;
     [SerializeField] float rayMaxDistance = 30f;
 
+    public Material red;
+    public Material blue;
+    public Material green;
+    public Material yellow;
+    public Material black;
+
     private TusInputAction controls;
 
     private List<string> gameActions = new List<string>();
     private List<string> madeActions = new List<string>();
+
+    //GameObject ColorDisplay = GameObject.Find("PuzzleColor");
+
+    Renderer objectRenderer;
 
     // Start is called before the first frame update
 
@@ -37,6 +47,8 @@ public class SimonPuzzle : MonoBehaviour
         gameActions.Add("Green");
         gameActions.Add("Blue");
         gameActions.Add("Yellow");
+
+        objectRenderer = GetComponent<Renderer>();
     }
 
     void Start()
@@ -50,6 +62,39 @@ public class SimonPuzzle : MonoBehaviour
         
     }
 
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+    }
+
+    void DisplayChallenge() // display colors that they need to hit in sequence
+    {
+
+        foreach (string color in gameActions)
+        {
+            if (color == "Red")
+            {
+                objectRenderer.material = red;
+            }
+            else if (color == "Blue")
+            {
+                objectRenderer.material = blue;
+            }
+            else if (color == "Green")
+            {
+                objectRenderer.material = green;
+            }
+            else if (color == "Yellow")
+            {
+                objectRenderer.material = yellow;
+            }
+
+            Wait();
+        }
+
+        objectRenderer.material = black;
+    }
+
     void Interact()
     {
         Debug.Log("Simon interact started");
@@ -60,13 +105,50 @@ public class SimonPuzzle : MonoBehaviour
         if (hit.transform == null)
             return;
 
+        Debug.Log(hit.transform.gameObject.name);
+
         if (hit.transform.gameObject.name == "SimonRed")
         {
-            if (gameActions[0] == "Red")
+            if (gameActions[madeActions.Count] == "Red")
             {
-
+                madeActions.Add("Red");
             }
         }
+        else if (hit.transform.gameObject.name == "SimonBlue")
+        {
+            if (gameActions[madeActions.Count] == "Blue")
+            {
+                madeActions.Add("Blue");
+            }
+        }
+        else if (hit.transform.gameObject.name == "SimonGreen")
+        {
+            if (gameActions[madeActions.Count] == "Green")
+            {
+                madeActions.Add("Green");
+            }
+        }
+        else if (hit.transform.gameObject.name == "SimonYellow")
+        {
+            if (gameActions[madeActions.Count] == "Yellow")
+            {
+                madeActions.Add("Yellow");
+            }
+        }
+        else if (hit.transform.gameObject.name == "PuzzleColor")
+        {
+            DisplayChallenge();
+        }
+        else
+        {
+            objectRenderer.material = red;
+            Debug.Log("Loss");
+        }
 
+        if (madeActions.Count == gameActions.Count)
+        {
+            objectRenderer.material = green;
+            Debug.Log("Win");
+        }
     }
 }

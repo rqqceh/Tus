@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 1551305177}
   - component: {fileID: 1551305176}
   - component: {fileID: 1551305175}
+  - component: {fileID: 1551305178}
   m_Layer: 0
   m_Name: PuzzleColor
   m_TagString: Untagged
@@ -854,7 +855,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 55c1fd14a9b6044e48571d339564286f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -884,6 +885,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551305173}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1551305178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551305173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bffbb5f1d7a74015981ba8eb4fa11af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromObject: {fileID: 0}
+  rayMaxDistance: 30
+  red: {fileID: 2100000, guid: 8313b7f851584554aa895abc637c721f, type: 2}
+  blue: {fileID: 2100000, guid: 93bd74aaf3854f54f9869f860012f605, type: 2}
+  green: {fileID: 2100000, guid: c60bcbfa520834a8f88b74b2eb55dcfa, type: 2}
+  yellow: {fileID: 2100000, guid: fe55676dbe5a348fd805ce17618d34a5, type: 2}
+  black: {fileID: 2100000, guid: 55c1fd14a9b6044e48571d339564286f, type: 2}
 --- !u!1 &1585761435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1185,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

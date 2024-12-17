@@ -62,9 +62,9 @@ public class SimonPuzzle : MonoBehaviour
         
     }
 
-    IEnumerator Wait()
+    IEnumerator Wait(int length)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(length);
     }
 
     void DisplayChallenge() // display colors that they need to hit in sequence
@@ -89,7 +89,7 @@ public class SimonPuzzle : MonoBehaviour
                 objectRenderer.material = yellow;
             }
 
-            Wait();
+            Wait(1);
         }
 
         objectRenderer.material = black;
